@@ -1,7 +1,5 @@
-const a = 'hello';
+// alert('경고창!!!');
 
-console.log('안녕 자바스크립트!');
+// confirm('정말.. 지울 거야?');
 
-console.log(navigator.language);
-
-console.log(a);
+// prompt('당신은 잘생겼습니까?');
