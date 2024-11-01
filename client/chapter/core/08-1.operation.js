@@ -68,7 +68,7 @@ console.log([...first, ...second]);
 
 // rest parameter
 
-function sum(...rest) {}
+function sum(...aaa) {}
 
 const obj = {
   name: 'tiger',
