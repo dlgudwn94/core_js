@@ -32,10 +32,10 @@ console.log(!reverseValue);
 // 조건 처리
 
 // 첫번째 Falsy를 찾는 연산 (&&)
-//let whichFalsy = true && ' ' && [] && { thisIsFalsy: false };
+let whichFalsy = true && ' ' && [] && { thisIsFalsy: false };
 
 // 첫번째 Truthy를 찾는 연산 (||)
-//let whichTruthy = false || '' || [2, 3].length || { thisIsTruthy: true };
+let whichTruthy = false || '' || [2, 3].length || { thisIsTruthy: true };
 
 console.clear();
 
@@ -46,7 +46,7 @@ function login() {
   // if(!userName) return
 
   if (userName.toLowerCase() === 'admin') {
-    let password = prompt('비밀번호를 입력해주세요');
+    let password = prompt('비밀번호를 입력해 주세요');
 
     if (password.toUpperCase() === 'MASTER') {
       console.log('로그인 성공');
@@ -59,7 +59,7 @@ function login() {
   } else if (userName === null || userName.replace(/\s*/g, '') === '') {
     console.log('취소됐습니다.');
   } else {
-    console.log('제대로된 값을 입력해주세요');
+    console.log('제대로된 값을 입력해 주세요');
   }
 }
 

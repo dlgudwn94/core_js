@@ -83,7 +83,8 @@ if (thisTime === MORNING) console.log('디스코드를 켠다');
 else if (thisTime === LUNCH) console.log('맛있는 점심을 먹는다');
 else if (thisTime === DINNER) console.log('맛있는 점심을 먹는다');
 else if (thisTime === NIGHT) console.log('맛있는 점심을 먹는다');
-else if (thisTime === LATE_NIGHT || thisTime === DAWN) console.log('맛있는 점심을 먹는다');
+else if (thisTime === LATE_NIGHT || thisTime === DAWN)
+  console.log('맛있는 점심을 먹는다');
 
 /* switch vs. if -------------------------------------------------------- */
 
@@ -93,7 +94,7 @@ console.clear();
 // 받은 숫자를 사용해서 switch case 돌려주시면 됩니다.
 
 // 함수는 하나의 기능만을 수행하는 것 (클린코드)
-// 함수는 재사용성을 고려해야합니다. (유연한 함수)
+// 함수는 재사용성을 고려해야 합니다. (유연한 함수)
 // separation of concerns (관심사의 분리)
 
 function getRandom(n) {
