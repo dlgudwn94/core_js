@@ -98,11 +98,10 @@ const keys = Object.keys(obj); // 객체의 key들을 모아 새로운 배열을
 const values = Object.values(obj); // 객체의 value들을 모아 새로운 배열을 '반환' 하는 유틸 함수
 const entries = Object.entries(obj); // 객체의 [key,value]들을 모아 한 쌍의 배열을 이루는 새로운 배열을 '반환' 하는 유틸 함수
 
-for (const keyValue of entries) {
-  const key = keyValue[0];
-  const value = keyValue[1];
+// 배열 구조 분해 할당
 
-  // console.log(value);
+for (const [key, value] of Object.entries(obj)) {
+  console.log(value);
 }
 
 const randomUser = {
@@ -142,30 +141,49 @@ const randomUser = {
 
 Object.prototype.nickName = 'tiger';
 
-for (const value in randomUser) {
-  if (Object.hasOwn(randomUser, value)) {
-    const L1 = randomUser[value];
-    console.log('\t', L1);
-    if (typeof L1 === 'object') {
-      for (const value in L1) {
-        if (Object.hasOwn(L1, value)) {
-          const L2 = L1[value];
-          console.log('\t\t', L2);
-          if (typeof L2 === 'object') {
-            for (const value in L2) {
-              if (Object.hasOwn(L2, value)) {
-                const L3 = L2[value];
-                console.log('\t\t\t', L3);
-              }
-            }
-          }
+// for(const value in randomUser){
+//   if(Object.hasOwn(randomUser,value)){
+//     const L1 = randomUser[value];
+//     console.log('\t',L1);
+//     if(typeof L1 === 'object'){
+//       for(const value in L1){
+//         if(Object.hasOwn(L1,value)){
+//           const L2 = L1[value];
+//           console.log('\t\t',L2);
+//           if(typeof L2 === 'object'){
+//             for(const value in L2){
+//               if(Object.hasOwn(L2,value)){
+//                 const L3 = L2[value];
+//                 console.log('\t\t\t',L3);
+//               }
+//             }
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// 재귀함수
+
+for (const keyValue of Object.entries(randomUser)) {
+  const key = keyValue[0];
+  const value = keyValue[1];
+
+  if (typeof value === 'object') {
+    for (const keyValue of Object.entries(value)) {
+      const key = keyValue[0];
+      const value = keyValue[1];
+
+      if (typeof value === 'object') {
+        for (const keyValue of Object.entries(value)) {
+          const key = keyValue[0];
+          const value = keyValue[1];
         }
       }
     }
   }
 }
-
-// 재귀함수
 
 // 객체의 키, 값 순환
 // - for ~ in 문
