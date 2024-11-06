@@ -81,11 +81,12 @@ console.assert(rem('25px') === '1.5625rem');
 console.assert(rem('30px', 10) === '3rem');
 
 // css(node: string, prop: string, value: number|strung) : string;
-let css;
 
 // 객체는 연산 표기법 2가지  [ .연산 , [대괄호] ]
 
 const first = document.querySelector('.first');
+
+// 왜?
 
 function setCss(node, prop, value) {
   if (typeof node === 'string') node = document.querySelector(node);
@@ -98,9 +99,42 @@ function setCss(node, prop, value) {
   node.style[prop] = value;
 }
 
-setCss('.first', 'color', 'orange');
+// setCss('.first','color','orange');
+
+function getCss(node, prop) {
+  if (typeof node === 'string') {
+    node = document.querySelector(node);
+  }
+
+  if (!(prop in document.body.style)) {
+    throw new ReferenceError('getCss 함수의 두 번째 인수는 유효한 css 속성 이어야 합니다.');
+  }
+
+  return getComputedStyle(node)[prop];
+}
+
+const fontSize = getCss('.first', 'border');
+
+function css(node, prop, value) {
+  // if(!value){
+  //   return getCss(node,prop) // getter
+  // }else{
+  //   // setter
+  //   return setCss(node,prop,value)
+  // }
+
+  return !value ? getCss(node, prop) : setCss(node, prop, value);
+}
+
+const _css = (node, prop, value) => (!value ? getCss(node, prop) : setCss(node, prop, value));
+
+console.log(css('.first', 'color'));
+// getter
+
+css('.first', 'color', 'red'); // setter
 
 /* 
+
 1. function name
 2. arguments (함수 실행부)
 3. parameter 
