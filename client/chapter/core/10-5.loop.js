@@ -189,3 +189,34 @@ for (const keyValue of Object.entries(randomUser)) {
 // - for ~ in 문
 // - for ~ of 문
 // - 성능 비교 진단
+
+function isArray(data) {
+  return Array.isArray(data);
+}
+
+function print(data) {
+  if (Object.prototype.toString.call(data).slice(8, -1).toLowerCase() === 'object') {
+    for (let keyValue of Object.entries(data)) {
+      let key = keyValue[0];
+      let value = keyValue[1];
+
+      if (typeof value === 'object' || isArray(value)) {
+        print(value);
+      } else {
+        console.log(key, ' : ', value);
+      }
+    }
+  }
+
+  if (isArray(data)) {
+    data.forEach((value, index) => {
+      if (typeof value === 'object' || isArray(value)) {
+        print(value);
+      } else {
+        console.log(index, ' : ', value);
+      }
+    });
+  }
+}
+
+print(randomUser);
