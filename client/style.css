@@ -8,3 +8,7 @@ h1 {
 .first {
   background-color: dodgerblue;
 }
+
+.second {
+  display: inline-block;
+}
