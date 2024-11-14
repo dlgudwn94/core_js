@@ -33,4 +33,71 @@
 - [x] Condition (if조건문) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/09-1.conditions.js)
 - [x] Condition (논리연산자) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/09-2.conditions.js)
 - [x] Condition (switch..case) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/09-3.conditions.js)
-- [ ] Condition (nullish) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/09-4.conditions.js)
+- [x] Condition (nullish) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/09-4.conditions.js)
+
+---
+
+- ## Function
+- [x] function (함수선언문) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/11-1.function.js)
+- [x] function (함수표현식) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/11-2.function.js)
+- [x] function (화살표함수) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/11-3.function.js)
+- [x] function (재귀함수) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/11-4.function.js)
+
+---
+
+## Object
+
+- [x] object (객체) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/12-1.object.js)
+- [x] object (copy by reference) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/12-2.object.js)
+- [x] object (garbage collection) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/12-3.object.js)
+- [x] object (method and this) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/12-4.object.js)
+
+---
+
+## Prototype
+
+- [x] prototype (프로토타입의 상속) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/13-1.prototype.js)
+- [x] prototype (클래스) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/13-2.classes.js)
+- [x] prototype (클래스 TODO) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/13-3.classes.js)
+
+---
+
+## Closure
+
+- [x] Closure (클로저) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/14-1.closure.js)
+- [x] Closure (시나리오) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/14-2.closure.js)
+
+---
+
+## OptionalChaining & wrapper
+
+- [x] OptionalChaining(옵셔널체이닝) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/15.Optional.js)
+- [x] Wrapper(wrapper object) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/16.wrapper.js)
+
+---
+
+## Number
+
+- [x] Number(number Type) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/17-1.number.js)
+- [x] Number(Math Object) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/17-2.number.js)
+
+---
+
+## String
+
+- [x] String(string Type) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/18.string.js)
+
+---
+
+## Array
+
+- [x] Array(array Type) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/19.array.js)
+- [x] ArrayMethod(array Method) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/20.arrayMethod.js)
+
+## iterator protocol
+
+- [x] iterator(iterator object) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/21.iterator.js)
+
+## 예외처리
+
+- [x] Try..catch(예외처리) [바로가기](https://github.com/dlgudwn94/core_js/blob/01.core/client/chapter/core/22.tryCatch.js)

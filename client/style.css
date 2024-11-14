@@ -38,6 +38,7 @@ body {
     background-color: dodgerblue;
     position: absolute;
   }
+
   & div {
     position: absolute;
   }
