@@ -1,6 +1,49 @@
 /* global syntaxError */
 
 /* -------------------------------------------- */
+/*                   css class                  */
+/* -------------------------------------------- */
+
+/**
+ * @function DOM Element에 클래스를 추가하는 함수
+ * @author kindtiger
+ * @type {HTMLElement | string} node
+ * @type  {string | array | object} className
+ * @return {void}
+ */
+
+function addClass(node, ...className) {
+  if (isString(node)) node = getNode(node);
+
+  className.forEach((c) => {
+    if (isObject(c)) c = Object.values(c);
+
+    if (c.includes(',')) {
+      c = c.replace(/\s*/g, '').split(',');
+    }
+
+    if (isArray(c)) {
+      c.forEach((c) => node.classList.add(c));
+    } else {
+      node.classList.add(c);
+    }
+  });
+}
+
+function removeClass(node, className) {
+  if (isString(node)) node = getNode(node);
+  if (!className) {
+    node.className = '';
+  }
+  node.classList.remove(className);
+}
+
+function toggleClass(node, className) {
+  if (isString(node)) node = getNode(node);
+  return node.classList.toggle(className);
+}
+
+/* -------------------------------------------- */
 /*                     style                    */
 /* -------------------------------------------- */
 
