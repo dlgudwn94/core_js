@@ -53,18 +53,43 @@ function handleMove({ offsetX: x, offsetY: y }) {
   insertLast(ground, template);
 }
 
-ground.addEventListener('mousemove', handleMove);
-
 // debounce
 
-const input = getNode('input');
+window.addEventListener('resize', () => {
+  console.log('값 계산중...'); // 1s
+});
 
-function handleInput() {
-  if (this.value === 'seonbeom@gmail.com') {
-  }
+function debounce(callback, limit = 500) {
+  let timeout;
+
+  return function (e) {
+    clearTimeout(timeout);
+
+    timeout = setTimeout(() => {
+      callback.call(this, e);
+    }, limit);
+  };
 }
 
-input.addEventListener('input', handleInput);
+function handle(e) {
+  console.log(e);
+}
+
+ground.addEventListener('mousemove', throttle(handle, 1000));
+
+function throttle(callback, limit = 500) {
+  let wait = false;
+
+  return function (...args) {
+    if (!wait) {
+      callback.apply(this, args);
+      wait = true;
+      setTimeout(() => (wait = false), limit);
+    }
+  };
+}
+
+// throttle
 
 /* 이벤트 추가/제거 --------------------------------------------------------- */
 

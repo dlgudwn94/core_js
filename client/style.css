@@ -69,7 +69,7 @@ nav {
   top: 50%;
   transform: translate(-50%, -50%);
   background-color: rgb(70, 167, 70);
-  cursor: none;
+  /* cursor: none; */
   overflow: hidden;
 }
 
@@ -80,7 +80,7 @@ nav {
 }
 
 .emotion {
-  font-size: 0.2rem;
+  font-size: 2rem;
   position: absolute;
   pointer-events: none;
 }
