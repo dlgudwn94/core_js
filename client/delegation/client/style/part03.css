@@ -18,7 +18,7 @@
 
 .heading h3 {
   font-size: 3rem;
-  font-family: "Josefin Slab", serif;
+  font-family: 'Josefin Slab', serif;
   overflow: hidden;
 }
 
@@ -90,7 +90,9 @@
   }
 }
 
-/* .swiper-pagination-bullet{
-  background-color: black !important
+.swiper-pagination-bullet {
+  /* background-color: black !important */
 }
- */
+.swiper-pagination-bullet-active {
+  /* background-color: red; */
+}
