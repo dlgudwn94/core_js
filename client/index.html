@@ -8,51 +8,26 @@
     <link rel="shortcut icon" href="./assets/favicon.svg" type="image/x-icon" />
 
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
-    <script src="./lib/error/typeError.js" defer></script>
-    <script src="./lib/error/syntaxError.js" defer></script>
-    <script src="./lib/error/refError.js" defer></script>
-    <script src="./lib/utils/type.js" defer></script>
-    <script src="./lib/dom/getNode.js" defer></script>
-    <script src="./lib/dom/css.js" defer></script>
-    <script src="./lib/dom/insert.js" defer></script>
-    <script src="./lib/dom/attr.js" defer></script>
-    <script src="./chapter/dom/08.bubble.js" defer></script>
+
+    <script src="./main.js" type="module"></script>
   </head>
   <body>
-    <!doctype html>
-    <html lang="ko-KR">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>⭐️스타벅스</title>
-      </head>
-      <body>
-        <header id="header">
-          <h1 class="logo">
-            <a href="#">⭐️</a>
-          </h1>
+    <form class="calculator">
+      <div class="first">
+        <label for="firstNumber">First Value</label>
+        <input type="number" name="first" id="firstNumber" required />
+      </div>
 
-          <nav>
-            <ul>
-              <li>
-                <a href="#">
-                  <span>☕️ COFFEE</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>📋 MENU</span>
-                </a>
-              </li>
-              <li>
-                <a href="#">
-                  <span>🏪 STORE</span>
-                </a>
-              </li>
-            </ul>
-          </nav>
-        </header>
-      </body>
-    </html>
+      <div class="operator">+</div>
+
+      <div class="second">
+        <label for="secondNumber">Second Value</label>
+        <input type="number" name="second" id="secondNumber" required />
+      </div>
+
+      <input id="clear" type="submit" value="clear" />
+
+      <div class="result">-</div>
+    </form>
   </body>
 </html>
