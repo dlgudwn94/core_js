@@ -1,9 +1,10 @@
 import data from './data/data.js';
 import {
+  copy,
   shake,
   addClass,
-  showAlert,
   getRandom,
+  showAlert,
   insertLast,
   removeClass,
   getNode as $,
@@ -61,7 +62,9 @@ function handleSubmit(e) {
 function handleCopy() {
   const text = this.textContent;
 
-  console.log(text);
+  copy(text).then(() => {
+    showAlert('.alert-success', '클립보드 복사 완료!');
+  });
 }
 
 submit.addEventListener('click', handleSubmit);
