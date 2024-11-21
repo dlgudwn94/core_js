@@ -7,6 +7,10 @@ const END_POINT = 'https://jsonplaceholder.typicode.com/users/2';
 // 3 : interactive
 // 4 : complete  => 성공 | 실패
 
+/* -------------------------------------------- */
+/*                   callback                   */
+/* -------------------------------------------- */
+
 function xhr({
   method = 'GET',
   url = '',
@@ -90,6 +94,44 @@ xhr.delete = (url, success, fail) => {
   });
 };
 
-// xhr.delete(END_POINT, (data) => {
-//   console.log(data);
-// });
+// xhr.delete(
+//   END_POINT,
+//   (data)=>{
+//     console.log( data );
+//   }
+// )
+
+/* -------------------------------------------- */
+/*                    promise                   */
+/* -------------------------------------------- */
+
+function xhrPromise(options) {
+  const { method, url } = options;
+
+  const xhr = new XMLHttpRequest();
+
+  xhr.open(method, url);
+  xhr.send();
+
+  return new Promise((resolve, reject) => {
+    xhr.addEventListener('readystatechange', () => {
+      if (xhr.readyState === 4) {
+        // complete
+        if (xhr.status >= 200 && xhr.status < 400) {
+          //
+          resolve(JSON.parse(xhr.response));
+        } else {
+          //
+          reject();
+        }
+      }
+    });
+  });
+}
+
+xhrPromise({
+  method: 'GET',
+  url: END_POINT,
+}).then((res) => {
+  console.log(res);
+});
