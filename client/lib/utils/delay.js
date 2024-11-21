@@ -1,4 +1,5 @@
 import { getNode } from '../dom/getNode.js';
+import { isNumber, isObject } from './type.js';
 
 function delay(callback, timeout = 1000) {
   setTimeout(callback, timeout);
@@ -39,17 +40,38 @@ p.then((res) => {
 
 // promise 객체를 반환하는 함수 => 재사용
 
-function delayP(shouldRejected, timeout = 1000) {
+const defaultOptions = {
+  shouldRejected: false,
+  data: '성공',
+  errorMessage: '알 수 없는 오류',
+  timeout: 1000,
+};
+
+function delayP(options) {
+  let config = { ...defaultOptions };
+
+  if (isNumber(options)) {
+    config.timeout = options;
+  }
+
+  if (isObject(options)) {
+    config = { ...defaultOptions, ...options };
+  }
+
+  const { shouldRejected, data, errorMessage, timeout } = config;
+
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       if (!shouldRejected) {
-        resolve('성공');
+        resolve(data);
       } else {
-        reject('실패');
+        reject(errorMessage);
       }
     }, timeout);
   });
 }
+
+// delayP(2000)
 
 // delayP(false)
 // .then((res)=>{
@@ -62,16 +84,19 @@ function delayP(shouldRejected, timeout = 1000) {
 
 // })
 
-delayP(false)
-  .then((res) => {
-    first.style.top = '-100px';
-    return delayP(false);
-  })
-  .then((res) => {
-    first.style.transform = 'rotate(360deg)';
-    return delayP(false);
-  })
-  .then((res) => {
-    first.style.top = '0px';
-    return delayP(false);
-  });
+// delayP(false)
+//   .then((res) => {
+
+//     first.style.top = '-100px';
+//     return delayP(false);
+//   })
+//   .then((res) => {
+
+//     first.style.transform = 'rotate(360deg)';
+//     return delayP(false);
+//   })
+//   .then((res) => {
+
+//     first.style.top = '0px';
+//     return delayP(false);
+//   });
