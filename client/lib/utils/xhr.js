@@ -121,7 +121,7 @@ const defaultOptions = {
   },
 };
 
-function xhrPromise(options = {}) {
+export function xhrPromise(options = {}) {
   const { method, url, errorMessage, body, headers } = {
     ...defaultOptions,
     ...options,
@@ -175,21 +175,28 @@ xhrPromise.post = (url, body) => xhrPromise({ url, body, method: 'POST' });
 xhrPromise.put = (url, body) => xhrPromise({ url, body, method: 'PUT' });
 xhrPromise.delete = (url) => xhrPromise({ url, method: 'DELETE' });
 
-xhrPromise
-  .get(END_POINT)
-  .then((res) => {
-    console.log(res);
+// xhrPromise.get(END_POINT)
+// .then((res)=>{
 
-    res.forEach(({ website }) => {
-      const tag = `
-      <div>site : ${website}</div>
-    `;
+//   console.log( res );
 
-      document.body.insertAdjacentHTML('beforeend', tag);
-    });
-  })
-  .then(() => {})
-  .catch(() => {});
+//   res.forEach(({website})=>{
+
+//     const tag = `
+//       <div>site : ${website}</div>
+//     `
+
+//     document.body.insertAdjacentHTML('beforeend',tag)
+
+//   })
+
+// })
+// .then(()=>{
+
+// })
+// .catch(()=>{
+
+// })
 
 // xhrPromise.put()
 // xhrPromise.delete()
