@@ -1,131 +1,39 @@
-import {
-  tiger,
-  delayP,
-  getNode,
-  insertLast,
-  changeColor,
-  clearContents,
-  renderSpinner,
-  renderUserCard,
-  renderEmptyCard,
-} from './lib/index.js';
+import { getNode, setStorage, getStorage, deleteStorage } from './lib/index.js';
 
-const END_POINT = 'http://localhost:3000/users';
-const userCardInner = getNode('.user-card-inner');
+const textField = getNode('#textField');
+const clearButton = getNode('button[data-name="clear"]');
 
-async function renderUserList() {
-  renderSpinner(userCardInner);
+// 1. 인풋 이벤트 바인딩
+//     - 인풋(textarea) 태그 선택
+//     - addEventListener('input',handler)
+//     - handler 함수 안에서 값 가져오기 (this.value)
 
-  try {
-    const response = await tiger.get(END_POINT);
+// 2. 인풋 값을 로컬 스토리지에 저장(타이핑 하는 순간 순간마다)
+//     - setStorage(key,value)
 
-    // getNode('.loadingSpinner').remove()
+// 3. init 함수 안에서 로컬스토리지에 있는 값을 가져와 인풋의 value로 설정
+//     - getStorage
+//     - text.value = value
 
-    gsap.to('.loadingSpinner', {
-      opacity: 0,
-      onComplete() {
-        this._targets[0].remove();
-      },
-    });
+// 4. 새로고침 => 데이터 유지
 
-    const data = response.data;
+// 5. clear 버튼 클릭시 데이터 제거 (로컬스토리지, 인풋값)
 
-    await delayP(1000);
-
-    data.forEach((user) => {
-      renderUserCard(userCardInner, user);
-    });
-
-    changeColor('.user-card');
-
-    gsap.from('.user-card', {
-      x: -100,
-      opacity: 0,
-      stagger: {
-        each: 0.1,
-        from: 'start',
-      },
-    });
-  } catch {
-    renderEmptyCard(userCardInner);
-  }
+function handleInput() {
+  const value = this.value;
+  setStorage('text', value);
 }
 
-renderUserList();
-
-function handleDeleteCard(e) {
-  const button = e.target.closest('button');
-
-  if (!button) return;
-
-  const article = button.parentElement;
-  const index = article.dataset.index.slice(5);
-
-  tiger.delete(`${END_POINT}/${index}`).then(() => {
-    alert('삭제가 완료됐습니다.');
-
-    // userCardInner.textContent = '';
-
-    clearContents(userCardInner);
-    renderUserList();
-  });
+function handleClear() {
+  textField.value = '';
+  deleteStorage('text');
 }
 
-userCardInner.addEventListener('click', handleDeleteCard);
-
-const createButton = getNode('.create');
-const cancelButton = getNode('.cancel');
-const doneButton = getNode('.done');
-
-// create 버튼을 선택한다.
-// 클릭 이벤트를 바인딩한다.
-// create에 open 클래스를 추가한다.
-
-// cancel 버튼을 선택한다.
-// 클릭 이벤트를 바인딩한다.
-// create에 open 클래스를 제거한다.
-
-// POST 통신을 해주세요.
-
-// 1. input의 value를 가져온다.
-// 2. value를 모아서 객체를 생성
-// 3. 생성 버튼을 누르면 POST통신을 한다.
-// 4. body에 생성한 객체를 실어보낸다.
-// 5. 카드 컨텐츠 비우기
-// 6. 유저카드 리랜더링
-
-const nameField = getNode('#nameField');
-
-function handleCreate() {
-  // this.classList.add('open');
-  gsap.to('.pop', { autoAlpha: 1 });
-  // getNode('#nameField').focus()
+function init() {
+  getStorage('text').then((res) => (textField.value = res));
 }
 
-function handleCancel(e) {
-  e.stopPropagation();
-  // createButton.classList.remove('open');
-  gsap.to('.pop', { autoAlpha: 0 });
-}
+textField.addEventListener('input', handleInput);
+clearButton.addEventListener('click', handleClear);
 
-function handleDone(e) {
-  e.preventDefault();
-
-  const username = getNode('#nameField').value;
-  const email = getNode('#emailField').value;
-  const website = getNode('#siteField').value;
-
-  tiger.post(END_POINT, { username, email, website }).then(() => {
-    gsap.to('.pop', { autoAlpha: 0 });
-    clearContents(userCardInner);
-    renderUserList();
-
-    getNode('#nameField').value = '';
-    getNode('#emailField').value = '';
-    getNode('#siteField').value = '';
-  });
-}
-
-createButton.addEventListener('click', handleCreate);
-cancelButton.addEventListener('click', handleCancel);
-doneButton.addEventListener('click', handleDone);
+init();
