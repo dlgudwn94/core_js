@@ -93,6 +93,6 @@ function getGeolocation() {
   });
 }
 
-const data = await getGeolocation();
+// const data = await getGeolocation();
 
 // console.log( data );
