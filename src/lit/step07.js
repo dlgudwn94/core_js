@@ -1,9 +1,18 @@
-import { LitElement, html } from "lit";
+import { LitElement, html, css } from "lit";
+
+import s from "/src/lit/test.css?inline";
 
 class TodoList extends LitElement {
   static properties = {
     _listItems: { state: true },
   };
+
+  static styles = css/* css */ `
+    .completed {
+      text-decoration: line-through;
+      color: #777;
+    }
+  `;
 
   constructor() {
     super();
@@ -24,11 +33,19 @@ class TodoList extends LitElement {
     this.input.value = "";
   }
 
+  toggleCompleted(item) {
+    item.completed = !item.completed;
+    this.requestUpdate();
+  }
+
   render() {
     return html/* html */ `
-      <h2>To Do List</h2>
+      <style>
+        ${s}
+      </style>
+      <h2 class="title">To Do List</h2>
       <ul>
-        ${this._listItems.map(({ text }) => html`<li>${text}</li>`)}
+        ${this._listItems.map((item) => html` <li class="${item.completed ? "completed" : ""}" @click=${() => this.toggleCompleted(item)}>${item.text}</li>`)}
       </ul>
       <label id="newItem">
         <input class="newItem" type="text" id="newItem" aria-label="새로운 아이템" />
