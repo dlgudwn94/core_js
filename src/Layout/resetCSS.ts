@@ -100,6 +100,9 @@ export default css`
   ul {
     list-style: none;
   }
+  img {
+    width: 100%;
+  }
   blockquote,
   q {
     quotes: none;
@@ -116,6 +119,8 @@ export default css`
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+  }
+  a {
     color: inherit;
     text-decoration: none;
   }
