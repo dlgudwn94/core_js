@@ -1,9 +1,14 @@
-import { LitElement, html, css, CSSResultGroup } from "lit";
-import { customElement } from "lit/decorators.js";
+import { css, CSSResultGroup, html, LitElement } from "lit";
+import { customElement, state } from "lit/decorators.js";
+import Swal from "sweetalert2";
+import { Auth } from "../@types/type";
 import resetCSS from "./resetCSS";
+import pb from "../api/pocketbase";
 
 @customElement("c-header")
 class Header extends LitElement {
+  @state() private loginData: Auth = {} as Auth;
+
   static styles: CSSResultGroup = [
     resetCSS,
     css`
@@ -33,7 +38,39 @@ class Header extends LitElement {
     `,
   ];
 
+  connectedCallback() {
+    super.connectedCallback();
+    this.fetchData();
+  }
+
+  fetchData() {
+    const auth = JSON.parse(localStorage.getItem("auth") ?? "{}");
+    this.loginData = auth;
+  }
+
+  handleLogout(e: Event) {
+    e.preventDefault();
+
+    Swal.fire({
+      title: "로그아웃",
+      text: "로그아웃 하시겠습니까?",
+      icon: "question",
+      showCancelButton: true,
+      confirmButtonText: "로그아웃",
+    }).then(({ isConfirmed }) => {
+      if (isConfirmed) {
+        localStorage.removeItem("auth");
+        pb.authStore.clear();
+        // this.loginData.isAuth = false;
+        // this.requestUpdate()
+        location.reload();
+      }
+    });
+  }
+
   render() {
+    const { isAuth, user } = this.loginData;
+
     return html`
       <header>
         <h1 class="logo">
@@ -45,7 +82,16 @@ class Header extends LitElement {
             <li><a href="/">About</a></li>
             <li><a href="/src/pages/product/">Product</a></li>
             <li><a href="/">Contact</a></li>
-            <li><a href="/src/pages/login/">Login</a></li>
+            <li>
+              ${!isAuth
+                ? html`<a href="/src/pages/login/">Login</a>`
+                : html`
+                    <div>
+                      <span>${user.name}님</span>
+                      <a @click=${this.handleLogout} href="/">Logout</a>
+                    </div>
+                  `}
+            </li>
           </ul>
         </nav>
       </header>
