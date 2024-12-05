@@ -45,7 +45,7 @@ class Header extends LitElement {
             <li><a href="/">About</a></li>
             <li><a href="/src/pages/product/">Product</a></li>
             <li><a href="/">Contact</a></li>
-            <li><a href="/">Login</a></li>
+            <li><a href="/src/pages/login/">Login</a></li>
           </ul>
         </nav>
       </header>
