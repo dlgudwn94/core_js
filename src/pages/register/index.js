@@ -1,3 +1,3 @@
 import "@/Layout/Header.ts";
-import "@/pages/register/register";
-// import "@/components/Register";
+// import "@/pages/register/register";
+import "@/components/Register";
