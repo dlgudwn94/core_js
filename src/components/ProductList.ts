@@ -65,6 +65,17 @@ class ProductList extends LitElement {
           }
         }
       }
+
+      .new-post {
+        padding: 0.5rem 1rem;
+        background-color: dodgerblue;
+        color: white;
+        border-radius: 20px;
+        position: fixed;
+        left: 50%;
+        transform: translateX(-50%);
+        bottom: 2rem;
+      }
     `,
   ];
 
@@ -122,6 +133,8 @@ class ProductList extends LitElement {
           )}
         </ul>
       </div>
+
+      <a class="new-post" href="/src/pages/newPost/">+ 상품추가</a>
     `;
   }
 }
